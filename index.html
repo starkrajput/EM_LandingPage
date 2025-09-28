@@ -284,6 +284,7 @@
         }
 
         /* Hero Section */
+        /* Hero Section - Complete CSS Fix */
         .hero {
             min-height: 110vh;
             display: flex;
@@ -291,20 +292,10 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #ffffff, #f8fafc, #e5e7ff);
+          /*  background: linear-gradient(135deg, #ffffff, #f8fafc, #e5e7ff);*/
+            color: white;
             padding-top: 80px;
         }
-
-            .hero::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
-                animation: float 8s ease-in-out infinite;
-            }
 
         .hero-background {
             position: absolute;
@@ -321,7 +312,52 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            filter: brightness(1.2) opacity(0.4);
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient( 135deg, rgba(59, 130, 246, 0.7) 0%, rgba(6, 182, 212, 0.6) 25%, rgba(37, 99, 235, 0.5) 50%, rgba(59, 130, 246, 0.4) 75%, rgba(6, 182, 212, 0.3) 100% );
+            backdrop-filter: blur(2px);
+            z-index: 1;
+        }
+
+        /* Ensure hero content is above the overlay */
+        .hero-content {
+            margin-top: 20px;
+            text-align: center;
+            color: #1a202c;
+            z-index: 3;
+            position: relative;
+            max-width: 1000px;
+            padding: 0 2rem;
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Optional: Enhanced blue theme for better integration */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient( circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50% ), radial-gradient( circle at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50% ), radial-gradient( circle at 40% 40%, rgba(14, 165, 233, 0.1) 0%, transparent 50% );
+            animation: float 8s ease-in-out infinite;
+            z-index: 2;
         }
 
         .hero-particles {
@@ -346,7 +382,8 @@
         .hero-content {
             margin-top: 20px;
             text-align: center;
-            color: #1a202c;
+     /*       color: #1a202c;*/
+     color:white;
             z-index: 2;
             position: relative;
             max-width: 1000px;
@@ -379,7 +416,8 @@
             animation: slideInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
             font-weight: 300;
             letter-spacing: 1px;
-            color: #4b5563;
+            /* color: #4b5563;*/
+            color: white;
         }
 
         .hero-description {
@@ -392,7 +430,8 @@
             margin-left: auto;
             margin-right: auto;
             font-weight: 300;
-            color: #6b7280;
+            color: white;
+            /* color: #6b7280;*/
         }
 
         .hero-buttons {
@@ -1265,79 +1304,7 @@
             font-size: 1.1rem;
             font-weight: 300;
         }
-/* SubMenu Option */
-        /* Custom Select Styles */
-.custom-select {
-  position: relative;
-  width: 100%;
-}
-.select-selected {
-  background: rgba(255, 255, 255, 0.8);
-  border: 2px solid rgba(59, 130, 246, 0.2);
-  border-radius: 12px;
-  padding: 1.2rem;
-  color: #374151;
-  font-size: 1rem;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-.select-selected::after {
-  content: '▼';
-  position: absolute;
-  top: 50%;
-  right: 1.2rem;
-  transform: translateY(-50%);
-  font-size: 0.8rem;
-  pointer-events: none;
-}
-.select-items {
-  position: absolute;
-  background: white;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  border: 2px solid rgba(59, 130, 246, 0.3);
-  border-top: none;
-  border-radius: 0 0 12px 12px;
-  max-height: 200px;
-  overflow-y: auto;
-  display: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.select-items div {
-  padding: 1rem 1.2rem;
-  cursor: pointer;
-  transition: background 0.2s;
-  position: relative;
-}
-.select-items div:hover {
-  background: rgba(6, 182, 212, 0.1);
-}
-.has-submenu {
-  display: flex;
-  justify-content: space-between;
-}
-.submenu {
-  display: none;
-  position: absolute;
-  left: 100%;
-  top: 0;
-  background: white;
-  width: 220px;
-  border: 2px solid rgba(59, 130, 246, 0.3);
-  border-radius: 0 12px 12px 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  z-index: 11;
-}
-.has-submenu:hover .submenu {
-  display: block;
-}
-.select-items.show {
-  display: block;
-}
+
         /* Testimonials */
         .testimonials {
             padding: 8rem 2rem;
@@ -1423,7 +1390,70 @@
             font-size: 1.1rem;
             letter-spacing: 0.5px;
         }
+        /* SubMenu*/
+        #entertainmentSubCategory {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 0;
+            overflow: hidden;
+        }
 
+            #entertainmentSubCategory.show {
+                opacity: 1;
+                transform: translateY(0);
+                max-height: 200px;
+                margin-bottom: 1.5rem;
+            }
+
+        /* Smooth animation for entertainment dropdown */
+        .form-select {
+            transition: all 0.3s ease;
+        }
+
+            .form-select:focus {
+                outline: none;
+                border-color: #06b6d4;
+                background: rgba(6, 182, 212, 0.1);
+                box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+                transform: translateY(-2px);
+            }
+
+        /* Entertainment type specific styling */
+        #entertainmentType {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(6, 182, 212, 0.05));
+            border: 2px solid rgba(59, 130, 246, 0.2);
+        }
+
+            #entertainmentType:hover {
+                border-color: rgba(6, 182, 212, 0.4);
+                background: rgba(6, 182, 212, 0.08);
+            }
+
+        /* Slide-in animation for entertainment options */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .entertainment-show {
+            animation: slideInDown 0.5s ease-out;
+        }
+
+        /* Enhanced form group styling for entertainment */
+        .form-group.entertainment-category {
+            background: rgba(6, 182, 212, 0.03);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px dashed rgba(6, 182, 212, 0.2);
+        }
         /* FAQ Section */
         .faq-section {
             padding: 8rem 2rem;
@@ -2168,7 +2198,8 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-background">
-            <img src="banner.png" alt="EventMunch Banner" class="hero-banner">
+            <img src="banner3.png" alt="EventMunch Banner" class="hero-banner">
+            <div class="hero-overlay"></div>
         </div>
         <div class="hero-particles">
             <div class="particle"></div>
@@ -2186,8 +2217,8 @@
             <p class="hero-subtitle">Transform Your Vision Into Unforgettable Experiences</p>
             <p class="hero-description">From venues and catering to decoration, entertainment, and photography – EventMunch helps organizers plan unforgettable events while vendors grow their business across India.</p>
             <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary"> Explore Events & Venues</a>
-                <a href="#" onclick="openContactModal()" class="btn btn-secondary"> List Your Business Free</a>
+                <a href="#services" class="btn btn-primary">Explore Events & Venues</a>
+                <a href="#" onclick="openContactModal()" class="btn btn-primary">List Your Business Free</a>
             </div>
             <div class="stats">
                 <div class="stat-item">
@@ -2209,6 +2240,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Services Section -->
     <section class="services" id="services">
@@ -2372,7 +2404,7 @@
                     <div class="testimonial-author">- Priya & Rahul</div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <div class="testimonial-stars">⭐⭐⭐⭐</div>
                     <p class="testimonial-text">"As a photographer, EventMunch helped me reach more clients. My bookings increased by 200%!"</p>
                     <div class="testimonial-author">- Amit Photography</div>
                 </div>
@@ -2529,22 +2561,13 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label required">Business Type</label>
-                        <select class="form-select" name="business_type" id="businessType" required>
+                        <select class="form-select" name="business_type" id="businessType" required onchange="handleBusinessTypeChange()">
                             <option value="">Select your business</option>
                             <option value="Venue Owner">Venue Owner</option>
                             <option value="Caterer">Caterer</option>
                             <option value="Decorator">Decorator</option>
                             <option value="Photographer">Photographer</option>
-                             <!-- Entertainment with hover sub-options -->
-      <div class="has-submenu" data-value="Entertainment">Entertainment ▼
-        <div class="submenu" id="entertainmentSubmenu">
-          <div data-value="DJ SYSTEM">DJ SYSTEM</div>
-          <div data-value="TRUCK DJ">TRUCK DJ</div>
-          <div data-value="LIVE BAND & DHOLL">LIVE BAND & DHOLL</div>
-          <div data-value="DANCER & PERFORMER">DANCER & PERFORMER</div>
-          <div data-value="OTHERS">OTHERS</div>
-        </div>
-      </div>
+                            <option value="Entertainment">Entertainment</option>
                             <option value="Event Planner">Event Planner</option>
                             <option value="Artist/Performer">Artist/Performer</option>
                             <option value="Rental Services">Rental Services</option>
@@ -2553,12 +2576,24 @@
                         <div class="form-error" id="businessTypeError"></div>
                     </div>
                 </div>
+                <div class="form-group" id="entertainmentSubCategory" style="display: none;">
+                    <label class="form-label required">Entertainment Type</label>
+                    <select class="form-select" name="entertainment_type" id="entertainmentType">
+                        <option value="">Select entertainment type</option>
+                        <option value="DJ SYSTEM">DJ SYSTEM</option>
+                        <option value="TRUCK DJ">TRUCK DJ</option>
+                        <option value="LIVE BAND & DHOL">LIVE BAND & DHOL</option>
+                        <option value="DANCER & PERFORMER">DANCER & PERFORMER</option>
+                        <option value="OTHERS">OTHERS</option>
+                    </select>
+                    <div class="form-error" id="entertainmentTypeError"></div>
+                </div>
                 <div class="form-group">
                     <label class="form-label">Business Details</label>
                     <textarea class="form-textarea" name="message" id="message" placeholder="Tell us about your business, services offered, experience, location, etc."></textarea>
                 </div>
                 <button type="submit" class="form-submit" id="submitBtn">
-                    <span class="text">Submit Application</span>
+                    <span class="text">🚀 Submit Application</span>
                     <span class="loading">⏳ Sending...</span>
                 </button>
             </form>
@@ -2625,10 +2660,10 @@
         function showSuccess(message) {
             const successDiv = document.createElement('div');
             successDiv.innerHTML = `
-                    <div style="position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 1rem 2rem; border-radius: 10px; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3); z-index: 10001; font-weight: 600;">
-                        ✅ ${message}
-                    </div>
-                `;
+                            <div style="position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 1rem 2rem; border-radius: 10px; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3); z-index: 10001; font-weight: 600;">
+                                ✅ ${message}
+                            </div>
+                        `;
             document.body.appendChild(successDiv);
             setTimeout(() => {
                 successDiv.remove();
@@ -2654,399 +2689,476 @@
             else clearError('email');
         });
 
-      
-            // Form Submission
-            function submitForm(event) {
-                event.preventDefault();
 
-                const form = document.getElementById('contactForm');
-                const submitBtn = document.getElementById('submitBtn');
+        // Form Submission
+        function submitForm(event) {
+            event.preventDefault();
 
-                // Get form data
-                const name = document.getElementById('name').value.trim();
-                const phone = document.getElementById('phone').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const businessType = document.getElementById('businessType').value;
-                const message = document.getElementById('message').value.trim();
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
 
-                // Validate all fields
-                let hasErrors = false;
+            // Get form data
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const businessType = document.getElementById('businessType').value;
+            const message = document.getElementById('message').value.trim();
 
-                const nameError = validateName(name);
-                if (nameError) {
-                    showError('name', nameError);
-                    hasErrors = true;
-                } else {
-                    clearError('name');
-                }
+            // Validate all fields
+            let hasErrors = false;
 
-                const phoneError = validatePhone(phone);
-                if (phoneError) {
-                    showError('phone', phoneError);
-                    hasErrors = true;
-                } else {
-                    clearError('phone');
-                }
-
-                const emailError = validateEmail(email);
-                if (emailError) {
-                    showError('email', emailError);
-                    hasErrors = true;
-                } else {
-                    clearError('email');
-                }
-
-                if (!businessType) {
-                    showError('businessType', 'Please select your business type');
-                    hasErrors = true;
-                } else {
-                    clearError('businessType');
-                }
-
-                if (hasErrors) return;
-
-                // Show loading state
-                submitBtn.classList.add('loading');
-                submitBtn.disabled = true;
-
-                // Prepare email data
-                const templateParams = {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    business_type: businessType,
-                    message: message || 'No additional details provided',
-                    to_name: 'EventMunch Team'
-                };
-
-                // Send email using EmailJS
-                emailjs.send('service_fspv1od', 'template_vai3jid', templateParams)
-                    .then(function (response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        showSuccess('Application submitted successfully! We\'ll contact you soon.');
-                        closeContactModal();
-                    })
-                    .catch(function (error) {
-                        console.log('FAILED...', error);
-                        showError('email', 'Failed to send application. Please try again.');
-                    })
-                    .finally(function () {
-                        submitBtn.classList.remove('loading');
-                        submitBtn.disabled = false;
-                    });
+            const nameError = validateName(name);
+            if (nameError) {
+                showError('name', nameError);
+                hasErrors = true;
+            } else {
+                clearError('name');
             }
 
-            function resetForm() {
-                const form = document.getElementById('contactForm');
-                form.reset();
-
-                // Clear all errors
-                ['name', 'phone', 'email', 'businessType'].forEach(fieldId => {
-                    clearError(fieldId);
-                });
-
-                // Reset submit button
-                const submitBtn = document.getElementById('submitBtn');
-                submitBtn.classList.remove('loading');
-                submitBtn.disabled = false;
+            const phoneError = validatePhone(phone);
+            if (phoneError) {
+                showError('phone', phoneError);
+                hasErrors = true;
+            } else {
+                clearError('phone');
             }
 
-            // Close modal with Escape key
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
-                    closeContactModal();
-                }
-            });
-            // Enhanced smooth scrolling with offset for fixed navbar
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+            const emailError = validateEmail(email);
+            if (emailError) {
+                showError('email', emailError);
+                hasErrors = true;
+            } else {
+                clearError('email');
+            }
 
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        // Close mobile menu if open
-                        const navLinks = document.querySelector('.nav-links');
-                        const hamburger = document.querySelector('.hamburger');
-                        if (navLinks.classList.contains('active')) {
-                            navLinks.classList.remove('active');
-                            hamburger.classList.remove('active');
-                        }
+            if (!businessType) {
+                showError('businessType', 'Please select your business type');
+                hasErrors = true;
+            } else {
+                clearError('businessType');
+            }
 
-                        // Calculate offset for fixed navbar
-                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+            if (hasErrors) return;
 
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
 
-            // Enhanced navbar on scroll
-            let lastScrollTop = 0;
-            window.addEventListener('scroll', function () {
-                const navbar = document.querySelector('.navbar');
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > 100) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                // Hide/show navbar on scroll
-                if (scrollTop > lastScrollTop && scrollTop > 200) {
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    navbar.style.transform = 'translateY(0)';
-                }
-                lastScrollTop = scrollTop;
-            });
-
-
-            // Mobile menu toggle
-            const hamburger = document.getElementById('hamburger');
-            const navLinks = document.getElementById('navLinks');
-
-            hamburger.addEventListener('click', function () {
-                this.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function (event) {
-                const isClickInsideNav = navLinks.contains(event.target);
-                const isClickOnHamburger = hamburger.contains(event.target);
-
-                if (!isClickInsideNav && !isClickOnHamburger && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    hamburger.classList.remove('active');
-                }
-            });
-
-            // Enhanced intersection observer for animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+            // Prepare email data
+            const templateParams = {
+                name: name,
+                phone: phone,
+                email: email,
+                business_type: businessType,
+                message: message || 'No additional details provided',
+                to_name: 'EventMunch Team'
             };
-            const observer = new IntersectionObserver(function (entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        // Add staggered animation delays for grid items
-                        if (entry.target.parentElement.classList.contains('services-grid') ||
-                            entry.target.parentElement.classList.contains('benefits-grid') ||
-                            entry.target.parentElement.classList.contains('vendor-grid') ||
-                            entry.target.parentElement.classList.contains('testimonials-grid')) {
-                            const siblings = Array.from(entry.target.parentElement.children);
-                            const index = siblings.indexOf(entry.target);
-                            entry.target.style.animationDelay = `${index * 0.1}s`;
-                        }
-                    }
-                });
-            }, observerOptions);
 
-            // Observe all animation elements
-            document.querySelectorAll('.fade-in, .scale-in, .service-card, .benefit-card, .vendor-card, .testimonial-card, .faq-item, .step-card').forEach(el => {
-                observer.observe(el);
+            // Send email using EmailJS
+            emailjs.send('service_fspv1od', 'template_vai3jid', templateParams)
+                .then(function (response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showSuccess('Application submitted successfully! We\'ll contact you soon.');
+                    closeContactModal();
+                })
+                .catch(function (error) {
+                    console.log('FAILED...', error);
+                    showError('email', 'Failed to send application. Please try again.');
+                })
+                .finally(function () {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                });
+        }
+
+        function resetForm() {
+            const form = document.getElementById('contactForm');
+            form.reset();
+
+            // Clear all errors
+            ['name', 'phone', 'email', 'businessType'].forEach(fieldId => {
+                clearError(fieldId);
             });
 
-            // Enhanced FAQ toggle
-            function toggleFAQ(element) {
-                const faqItem = element.parentElement;
-                const answer = element.nextElementSibling;
-                const icon = element.querySelector('.faq-toggle');
-                // Close other open FAQs
-                document.querySelectorAll('.faq-item.active').forEach(item => {
-                    if (item !== faqItem) {
-                        item.classList.remove('active');
-                        item.querySelector('.faq-answer').classList.remove('active');
-                        item.querySelector('.faq-toggle').textContent = '+';
-                    }
-                });
-                // Toggle current FAQ
-                if (faqItem.classList.contains('active')) {
-                    faqItem.classList.remove('active');
-                    answer.classList.remove('active');
-                    icon.textContent = '+';
-                } else {
-                    faqItem.classList.add('active');
-                    answer.classList.add('active');
-                    icon.textContent = '−';
-                }
+            // Reset submit button
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
             }
+        });
+        // Enhanced smooth scrolling with offset for fixed navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
 
-            // Enhanced back to top button
-            const backToTopButton = document.getElementById('backToTop');
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 400) {
-                    backToTopButton.classList.add('visible');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                }
-            });
-            backToTopButton.addEventListener('click', function () {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // Enhanced hover effects
-            document.querySelectorAll('.service-card, .benefit-card, .vendor-card, .testimonial-card').forEach(card => {
-                card.addEventListener('mouseenter', function () {
-                    this.style.transform = 'translateY(-15px) scale(1.02)';
-                });
-                card.addEventListener('mouseleave', function () {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-
-            // Enhanced button click effects
-            document.querySelectorAll('.btn').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-                    ripple.style.width = ripple.style.height = size + 'px';
-                    ripple.style.left = x + 'px';
-                    ripple.style.top = y + 'px';
-                    ripple.classList.add('ripple-effect');
-                    this.appendChild(ripple);
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-
-            // Enhanced statistics counter animation
-            function animateCounters() {
-                const counters = document.querySelectorAll('.stat-number');
-                counters.forEach((counter, index) => {
-                    const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
-                    const increment = target / 150;
-                    let current = 0;
-                    setTimeout(() => {
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                current = target;
-                                clearInterval(timer);
-                            }
-                            let displayValue = Math.floor(current);
-                            if (index === 2) { // Events counter
-                                displayValue = (displayValue / 1000).toFixed(0) + 'K';
-                            } else if (index === 3) { // Rating counter
-                                displayValue = (displayValue / 10).toFixed(1) + '★';
-                            } else {
-                                displayValue += '+';
-                            }
-                            counter.textContent = displayValue;
-                        }, 20);
-                    }, index * 200);
-                });
-            }
-
-            // Enhanced particle system
-            function createParticles() {
-                const particleContainer = document.querySelector('.hero-particles');
-                for (let i = 0; i < 15; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.top = Math.random() * 100 + '%';
-                    particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                    particle.style.animationDelay = Math.random() * 5 + 's';
-                    particleContainer.appendChild(particle);
-                }
-            }
-
-            // Initialize enhanced features
-            window.addEventListener('load', function () {
-                // Fade in body
-                document.body.style.opacity = '0';
-                document.body.style.transition = 'opacity 0.8s ease';
-                setTimeout(() => {
-                    document.body.style.opacity = '1';
-                }, 100);
-                // Initialize counters and particles
-                setTimeout(animateCounters, 1000);
-                createParticles();
-            });
-
-            // Enhanced CSS for ripple effect
-            const rippleStyle = document.createElement('style');
-            rippleStyle.textContent = `
-                                .ripple-effect {
-                                    position: absolute;
-                                    border-radius: 50%;
-                                    background: rgba(255,255,255,0.6);
-                                    transform: scale(0);
-                                    animation: ripple 0.6s linear;
-                                    pointer-events: none;
-                                }
-                                @keyframes ripple {
-                                    to {
-                                        transform: scale(4);
-                                        opacity: 0;
-                                    }
-                                }
-                            `;
-            document.head.appendChild(rippleStyle);
-
-            // Handle window resize for responsive design
-            window.addEventListener('resize', function () {
-                // Close mobile menu if window is resized to desktop
-                if (window.innerWidth > 768) {
+                const target = document.querySelector(targetId);
+                if (target) {
+                    // Close mobile menu if open
                     const navLinks = document.querySelector('.nav-links');
                     const hamburger = document.querySelector('.hamburger');
                     if (navLinks.classList.contains('active')) {
                         navLinks.classList.remove('active');
                         hamburger.classList.remove('active');
                     }
+
+                    // Calculate offset for fixed navbar
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
+        });
 
-        /* Submenu option */
-        // Custom Business Type Dropdown Logic
-document.addEventListener('DOMContentLoaded', function () {
-  const selectSelected = document.getElementById('selectedBusinessType');
-  const selectItems = document.getElementById('businessTypeOptions');
-  const hiddenInput = document.getElementById('businessType');
-  const wrapper = document.getElementById('businessTypeWrapper');
+        // Enhanced navbar on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            // Hide/show navbar on scroll
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
 
-  // Toggle dropdown
-  selectSelected.addEventListener('click', function (e) {
-    e.stopPropagation();
-    selectItems.classList.toggle('show');
-  });
 
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function () {
-    selectItems.classList.remove('show');
-  });
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
 
-  // Handle selection (including submenu)
-  selectItems.addEventListener('click', function (e) {
-    if (e.target.hasAttribute('data-value')) {
-      const value = e.target.getAttribute('data-value');
-      const text = e.target.textContent.trim().replace(' ▼', '');
-      selectSelected.textContent = text;
-      hiddenInput.value = value;
-      selectItems.classList.remove('show');
-      clearError('businessType');
-    }
-  });
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
 
-  // Prevent closing when clicking inside dropdown
-  wrapper.addEventListener('click', function (e) {
-    e.stopPropagation();
-  });
-});
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const isClickInsideNav = navLinks.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+
+            if (!isClickInsideNav && !isClickOnHamburger && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Enhanced intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Add staggered animation delays for grid items
+                    if (entry.target.parentElement.classList.contains('services-grid') ||
+                        entry.target.parentElement.classList.contains('benefits-grid') ||
+                        entry.target.parentElement.classList.contains('vendor-grid') ||
+                        entry.target.parentElement.classList.contains('testimonials-grid')) {
+                        const siblings = Array.from(entry.target.parentElement.children);
+                        const index = siblings.indexOf(entry.target);
+                        entry.target.style.animationDelay = `${index * 0.1}s`;
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animation elements
+        document.querySelectorAll('.fade-in, .scale-in, .service-card, .benefit-card, .vendor-card, .testimonial-card, .faq-item, .step-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced FAQ toggle
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-toggle');
+            // Close other open FAQs
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').classList.remove('active');
+                    item.querySelector('.faq-toggle').textContent = '+';
+                }
+            });
+            // Toggle current FAQ
+            if (faqItem.classList.contains('active')) {
+                faqItem.classList.remove('active');
+                answer.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                faqItem.classList.add('active');
+                answer.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+
+        // Enhanced back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 400) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        backToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Enhanced hover effects
+        document.querySelectorAll('.service-card, .benefit-card, .vendor-card, .testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Enhanced button click effects
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple-effect');
+                this.appendChild(ripple);
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Enhanced statistics counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach((counter, index) => {
+                const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
+                const increment = target / 150;
+                let current = 0;
+                setTimeout(() => {
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        let displayValue = Math.floor(current);
+                        if (index === 2) { // Events counter
+                            displayValue = (displayValue / 1000).toFixed(0) + 'K';
+                        } else if (index === 3) { // Rating counter
+                            displayValue = (displayValue / 10).toFixed(1) + '★';
+                        } else {
+                            displayValue += '+';
+                        }
+                        counter.textContent = displayValue;
+                    }, 20);
+                }, index * 200);
+            });
+        }
+
+        // Enhanced particle system
+        function createParticles() {
+            const particleContainer = document.querySelector('.hero-particles');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particleContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize enhanced features
+        window.addEventListener('load', function () {
+            // Fade in body
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            // Initialize counters and particles
+            setTimeout(animateCounters, 1000);
+            createParticles();
+        });
+
+        // Enhanced CSS for ripple effect
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+                                        .ripple-effect {
+                                            position: absolute;
+                                            border-radius: 50%;
+                                            background: rgba(255,255,255,0.6);
+                                            transform: scale(0);
+                                            animation: ripple 0.6s linear;
+                                            pointer-events: none;
+                                        }
+                                        @keyframes ripple {
+                                            to {
+                                                transform: scale(4);
+                                                opacity: 0;
+                                            }
+                                        }
+                                    `;
+        document.head.appendChild(rippleStyle);
+
+        // Handle window resize for responsive design
+        window.addEventListener('resize', function () {
+            // Close mobile menu if window is resized to desktop
+            if (window.innerWidth > 768) {
+                const navLinks = document.querySelector('.nav-links');
+                const hamburger = document.querySelector('.hamburger');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            }
+        });
+
+        /* SubMenu */
+        function handleBusinessTypeChange() {
+            const businessType = document.getElementById('businessType').value;
+            const entertainmentSubCategory = document.getElementById('entertainmentSubCategory');
+            const entertainmentType = document.getElementById('entertainmentType');
+
+            if (businessType === 'Entertainment') {
+                // Show entertainment subcategory with animation
+                entertainmentSubCategory.style.display = 'block';
+                setTimeout(() => {
+                    entertainmentSubCategory.classList.add('show', 'entertainment-show');
+                }, 10);
+                entertainmentType.required = true;
+
+                // Add special styling class
+                entertainmentSubCategory.classList.add('entertainment-category');
+            } else {
+                // Hide entertainment subcategory with animation
+                entertainmentSubCategory.classList.remove('show', 'entertainment-show');
+                setTimeout(() => {
+                    entertainmentSubCategory.style.display = 'none';
+                }, 400);
+
+                entertainmentType.required = false;
+                entertainmentType.value = '';
+                entertainmentSubCategory.classList.remove('entertainment-category');
+                clearError('entertainmentType');
+            }
+        }
+
+        // Enhanced form validation for entertainment type
+        function validateEntertainmentType(entertainmentType, businessType) {
+            if (businessType === 'Entertainment' && !entertainmentType) {
+                return 'Please select your entertainment type';
+            }
+            return '';
+        }
+
+        // Updated form submission validation (add this to your existing submitForm function)
+        function validateFormWithEntertainment() {
+            const businessType = document.getElementById('businessType').value;
+            const entertainmentType = document.getElementById('entertainmentType').value;
+
+            let hasErrors = false;
+
+            // Validate entertainment type if Entertainment is selected
+            if (businessType === 'Entertainment') {
+                const entertainmentError = validateEntertainmentType(entertainmentType, businessType);
+                if (entertainmentError) {
+                    showError('entertainmentType', entertainmentError);
+                    hasErrors = true;
+                } else {
+                    clearError('entertainmentType');
+                }
+            }
+
+            return !hasErrors;
+        }
+
+        // Add event listener for entertainment type selection
+        document.addEventListener('DOMContentLoaded', function () {
+            const entertainmentTypeSelect = document.getElementById('entertainmentType');
+            if (entertainmentTypeSelect) {
+                entertainmentTypeSelect.addEventListener('change', function () {
+                    if (this.value) {
+                        clearError('entertainmentType');
+                        // Add visual feedback for selection
+                        this.style.borderColor = '#10b981';
+                        this.style.background = 'rgba(16, 185, 129, 0.05)';
+                    }
+                });
+            }
+        });
+
+        // Reset form function update (add to your existing resetForm function)
+        function resetEntertainmentForm() {
+            const entertainmentSubCategory = document.getElementById('entertainmentSubCategory');
+            const entertainmentType = document.getElementById('entertainmentType');
+
+            // Hide entertainment subcategory
+            entertainmentSubCategory.classList.remove('show', 'entertainment-show', 'entertainment-category');
+            entertainmentSubCategory.style.display = 'none';
+            entertainmentType.required = false;
+            entertainmentType.value = '';
+
+            // Clear entertainment type error
+            clearError('entertainmentType');
+        }
+
+        // Hover effects for entertainment options (optional enhancement)
+        function addEntertainmentHoverEffects() {
+            const entertainmentOptions = document.querySelectorAll('#entertainmentType option');
+            entertainmentOptions.forEach(option => {
+                if (option.value) {
+                    option.style.transition = 'all 0.3s ease';
+                }
+            });
+        }
+
+        // Initialize entertainment functionality
+        function initializeEntertainmentFeature() {
+            // Add change event listener to business type dropdown
+            const businessTypeSelect = document.getElementById('businessType');
+            if (businessTypeSelect) {
+                businessTypeSelect.addEventListener('change', handleBusinessTypeChange);
+            }
+
+            // Initialize hover effects
+            addEntertainmentHoverEffects();
+        }
+
+        // Call initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeEntertainmentFeature);
     </script>
 </body>
 </html>
